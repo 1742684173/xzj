@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4DBC1DDB-CE88-43BB-B4CF-2B9A7FB0BD4D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>xzj</RootNamespace>
+    <AssemblyName>析之助手术登记管理系统</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Administrator\Desktop\xzz\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>2</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A1AE77BB0C3A1787ABD92E18BDE209FA88A86078</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>xzj_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>D:\software\sqlite2005\bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBDictionary.cs" />
+    <Compile Include="DBEmp.cs" />
+    <Compile Include="DBRecords.cs" />
+    <Compile Include="DBManager.cs" />
+    <Compile Include="DBSQLite.cs" />
+    <Compile Include="FormAddDictionary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddDictionary.Designer.cs">
+      <DependentUpon>FormAddDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddEmp.Designer.cs">
+      <DependentUpon>FormAddEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddSSZZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddSSZZ.Designer.cs">
+      <DependentUpon>FormAddSSZZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddControl.Designer.cs">
+      <DependentUpon>FormAddControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormControl.Designer.cs">
+      <DependentUpon>FormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UtilConfig.cs" />
+    <Compile Include="FormConfigDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConfigDB.Designer.cs">
+      <DependentUpon>FormConfigDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSignIn.Designer.cs">
+      <DependentUpon>FormSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="utils\CutImage.cs" />
+    <Compile Include="utils\FontHelpler.cs" />
+    <Compile Include="utils\ImageHelpler.cs" />
+    <Compile Include="utils\PDFHelpler.cs" />
+    <Compile Include="utils\RichTextBoxHelper.cs" />
+    <Compile Include="utils\SqlCommandHelpler.cs" />
+    <Compile Include="utils\SqlHelper4MySql.cs" />
+    <Compile Include="utils\ValueSender.cs" />
+    <Compile Include="UtilTextAndValue.cs" />
+    <Compile Include="UtilTools.cs" />
+    <Compile Include="xzjForm\FormControlContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xzjForm\FormControlContent.Designer.cs">
+      <DependentUpon>FormControlContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xzjForm\FormModifyControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xzjForm\FormModifyControl.Designer.cs">
+      <DependentUpon>FormModifyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xzjForm\RichTextBoxPrintCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="FormAddDictionary.resx">
+      <DependentUpon>FormAddDictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddEmp.resx">
+      <DependentUpon>FormAddEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddSSZZ.resx">
+      <DependentUpon>FormAddSSZZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConfigDB.resx">
+      <DependentUpon>FormConfigDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControl.resx">
+      <DependentUpon>FormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddControl.resx">
+      <DependentUpon>FormAddControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSignIn.resx">
+      <DependentUpon>FormSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xzjForm\FormControlContent.resx">
+      <DependentUpon>FormControlContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xzjForm\FormModifyControl.resx">
+      <DependentUpon>FormModifyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signInTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signInCloseForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signInBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signInBtnClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configDBForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dbConfigSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configDbClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configDbTest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signIn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainTop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainTop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainToRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\end.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bitbug_favicon %282%29.ico" />
+    <Content Include="bitbug_favicon.ico" />
+    <Content Include="logo.ico" />
+    <Content Include="Resources\close.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\right.png" />
+    <None Include="Resources\left.png" />
+    <None Include="Resources\square-o.png" />
+    <None Include="Resources\line.png" />
+    <None Include="Resources\close1.png" />
+    <None Include="Resources\mainTop3.png" />
+    <None Include="Resources\signIn2.png" />
+    <None Include="Resources\signInBtnClose1.png" />
+    <None Include="Resources\signInBtn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Google.Protobuf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
