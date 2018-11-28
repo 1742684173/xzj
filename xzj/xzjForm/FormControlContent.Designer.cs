@@ -34,6 +34,11 @@
             this.panel69 = new System.Windows.Forms.Panel();
             this.panelRTB = new System.Windows.Forms.Panel();
             this.rtbSSLR_SSJL = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStripRichSet = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPrintPreview = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -54,20 +59,15 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.label2 = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
-            this.contextMenuStripRichSet = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.picMin = new System.Windows.Forms.PictureBox();
             this.panel68.SuspendLayout();
             this.panel69.SuspendLayout();
             this.panelRTB.SuspendLayout();
+            this.contextMenuStripRichSet.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel43.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
-            this.contextMenuStripRichSet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,6 +117,41 @@
             this.rtbSSLR_SSJL.TabIndex = 6;
             this.rtbSSLR_SSJL.Text = "";
             this.rtbSSLR_SSJL.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.rtbSSLR_SSJL_ContentsResized);
+            // 
+            // contextMenuStripRichSet
+            // 
+            this.contextMenuStripRichSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopy,
+            this.toolStripMenuItemCut,
+            this.toolStripMenuItemPaste,
+            this.toolStripMenuItemSelectAll});
+            this.contextMenuStripRichSet.Name = "contextMenuStripRichSet";
+            this.contextMenuStripRichSet.Size = new System.Drawing.Size(101, 92);
+            this.contextMenuStripRichSet.Click += new System.EventHandler(this.contextMenuStripRichSet_Click);
+            // 
+            // toolStripMenuItemCopy
+            // 
+            this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
+            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(100, 22);
+            this.toolStripMenuItemCopy.Text = "复制";
+            // 
+            // toolStripMenuItemCut
+            // 
+            this.toolStripMenuItemCut.Name = "toolStripMenuItemCut";
+            this.toolStripMenuItemCut.Size = new System.Drawing.Size(100, 22);
+            this.toolStripMenuItemCut.Text = "剪切";
+            // 
+            // toolStripMenuItemPaste
+            // 
+            this.toolStripMenuItemPaste.Name = "toolStripMenuItemPaste";
+            this.toolStripMenuItemPaste.Size = new System.Drawing.Size(100, 22);
+            this.toolStripMenuItemPaste.Text = "粘贴";
+            // 
+            // toolStripMenuItemSelectAll
+            // 
+            this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
+            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(100, 22);
+            this.toolStripMenuItemSelectAll.Text = "全选";
             // 
             // panel1
             // 
@@ -346,41 +381,6 @@
             this.picClose.TabStop = false;
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
-            // contextMenuStripRichSet
-            // 
-            this.contextMenuStripRichSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCopy,
-            this.toolStripMenuItemCut,
-            this.toolStripMenuItemPaste,
-            this.toolStripMenuItemSelectAll});
-            this.contextMenuStripRichSet.Name = "contextMenuStripRichSet";
-            this.contextMenuStripRichSet.Size = new System.Drawing.Size(101, 92);
-            this.contextMenuStripRichSet.Click += new System.EventHandler(this.contextMenuStripRichSet_Click);
-            // 
-            // toolStripMenuItemCopy
-            // 
-            this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
-            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(100, 22);
-            this.toolStripMenuItemCopy.Text = "复制";
-            // 
-            // toolStripMenuItemCut
-            // 
-            this.toolStripMenuItemCut.Name = "toolStripMenuItemCut";
-            this.toolStripMenuItemCut.Size = new System.Drawing.Size(100, 22);
-            this.toolStripMenuItemCut.Text = "剪切";
-            // 
-            // toolStripMenuItemPaste
-            // 
-            this.toolStripMenuItemPaste.Name = "toolStripMenuItemPaste";
-            this.toolStripMenuItemPaste.Size = new System.Drawing.Size(100, 22);
-            this.toolStripMenuItemPaste.Text = "粘贴";
-            // 
-            // toolStripMenuItemSelectAll
-            // 
-            this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
-            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(100, 22);
-            this.toolStripMenuItemSelectAll.Text = "全选";
-            // 
             // picMin
             // 
             this.picMin.BackColor = System.Drawing.Color.Transparent;
@@ -414,13 +414,13 @@
             this.panel68.ResumeLayout(false);
             this.panel69.ResumeLayout(false);
             this.panelRTB.ResumeLayout(false);
+            this.contextMenuStripRichSet.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel43.ResumeLayout(false);
             this.panel43.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
-            this.contextMenuStripRichSet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picMin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

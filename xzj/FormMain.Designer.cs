@@ -30,20 +30,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -91,7 +91,9 @@
             this.rtbSSLR_SSJL = new System.Windows.Forms.RichTextBox();
             this.contextMenuStripRichSet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.label104 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -543,6 +545,7 @@
             this.dgvSSZZ = new System.Windows.Forms.DataGridView();
             this.createDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.panel77 = new System.Windows.Forms.Panel();
             this.grupbxSSZZ_ZZCG = new System.Windows.Forms.GroupBox();
@@ -616,8 +619,6 @@
             this.imgLstTTLB = new System.Windows.Forms.ImageList(this.components);
             this.imgSSTP = new System.Windows.Forms.ImageList(this.components);
             this.printPreviewDialogSJCX_SSJL = new System.Windows.Forms.PrintPreviewDialog();
-            this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1386,14 +1387,26 @@
             // toolStripMenuItemCopy
             // 
             this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
-            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(100, 22);
             this.toolStripMenuItemCopy.Text = "复制";
+            // 
+            // toolStripMenuItemCut
+            // 
+            this.toolStripMenuItemCut.Name = "toolStripMenuItemCut";
+            this.toolStripMenuItemCut.Size = new System.Drawing.Size(100, 22);
+            this.toolStripMenuItemCut.Text = "剪切";
             // 
             // toolStripMenuItemPaste
             // 
             this.toolStripMenuItemPaste.Name = "toolStripMenuItemPaste";
-            this.toolStripMenuItemPaste.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemPaste.Size = new System.Drawing.Size(100, 22);
             this.toolStripMenuItemPaste.Text = "粘贴";
+            // 
+            // toolStripMenuItemSelectAll
+            // 
+            this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
+            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(100, 22);
+            this.toolStripMenuItemSelectAll.Text = "全选";
             // 
             // label104
             // 
@@ -1495,6 +1508,7 @@
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox10.TabIndex = 38;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
             // 
             // btnRemoveSSTP
             // 
@@ -1532,6 +1546,7 @@
             this.picSSTP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picSSTP.TabIndex = 0;
             this.picSSTP.TabStop = false;
+            this.picSSTP.Click += new System.EventHandler(this.picSSTP_Click);
             // 
             // panel128
             // 
@@ -2807,14 +2822,14 @@
             this.dgvDictionary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDictionary.BackgroundColor = System.Drawing.Color.White;
             this.dgvDictionary.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDictionary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDictionary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDictionary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDictionary.EnableHeadersVisualStyles = false;
             this.dgvDictionary.Location = new System.Drawing.Point(19, 104);
@@ -4982,21 +4997,21 @@
             // 
             // chartPie_2
             // 
-            chartArea9.Name = "ChartArea1";
-            this.chartPie_2.ChartAreas.Add(chartArea9);
+            chartArea1.Name = "ChartArea1";
+            this.chartPie_2.ChartAreas.Add(chartArea1);
             this.chartPie_2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend9.Name = "Legend1";
-            this.chartPie_2.Legends.Add(legend9);
+            legend1.Name = "Legend1";
+            this.chartPie_2.Legends.Add(legend1);
             this.chartPie_2.Location = new System.Drawing.Point(0, 22);
             this.chartPie_2.Name = "chartPie_2";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series9.IsValueShownAsLabel = true;
-            series9.Label = "#VALX [#VAL](#PERCENT)";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            series9.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
-            this.chartPie_2.Series.Add(series9);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Label = "#VALX [#VAL](#PERCENT)";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            this.chartPie_2.Series.Add(series1);
             this.chartPie_2.Size = new System.Drawing.Size(528, 193);
             this.chartPie_2.TabIndex = 2;
             this.chartPie_2.Text = "男女比例";
@@ -5022,21 +5037,21 @@
             // 
             // chartPie_4
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chartPie_4.ChartAreas.Add(chartArea10);
+            chartArea2.Name = "ChartArea1";
+            this.chartPie_4.ChartAreas.Add(chartArea2);
             this.chartPie_4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend10.Name = "Legend1";
-            this.chartPie_4.Legends.Add(legend10);
+            legend2.Name = "Legend1";
+            this.chartPie_4.Legends.Add(legend2);
             this.chartPie_4.Location = new System.Drawing.Point(0, 25);
             this.chartPie_4.Name = "chartPie_4";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series10.IsValueShownAsLabel = true;
-            series10.Label = "#VALX\\n[#VAL](#PERCENT)";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            series10.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
-            this.chartPie_4.Series.Add(series10);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.Label = "#VALX\\n[#VAL](#PERCENT)";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            this.chartPie_4.Series.Add(series2);
             this.chartPie_4.Size = new System.Drawing.Size(528, 184);
             this.chartPie_4.TabIndex = 2;
             this.chartPie_4.Text = "男女比例";
@@ -5062,20 +5077,20 @@
             // 
             // chartPie_1
             // 
-            chartArea11.Name = "ChartArea1";
-            this.chartPie_1.ChartAreas.Add(chartArea11);
+            chartArea3.Name = "ChartArea1";
+            this.chartPie_1.ChartAreas.Add(chartArea3);
             this.chartPie_1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend11.Name = "Legend1";
-            this.chartPie_1.Legends.Add(legend11);
+            legend3.Name = "Legend1";
+            this.chartPie_1.Legends.Add(legend3);
             this.chartPie_1.Location = new System.Drawing.Point(0, 17);
             this.chartPie_1.Name = "chartPie_1";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series11.IsValueShownAsLabel = true;
-            series11.Label = "#VALX[#VAL](#PERCENT)";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            this.chartPie_1.Series.Add(series11);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.IsValueShownAsLabel = true;
+            series3.Label = "#VALX[#VAL](#PERCENT)";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartPie_1.Series.Add(series3);
             this.chartPie_1.Size = new System.Drawing.Size(528, 200);
             this.chartPie_1.TabIndex = 0;
             this.chartPie_1.Text = "男女比例";
@@ -5092,21 +5107,21 @@
             // 
             // chartPie_3
             // 
-            chartArea12.Name = "ChartArea1";
-            this.chartPie_3.ChartAreas.Add(chartArea12);
+            chartArea4.Name = "ChartArea1";
+            this.chartPie_3.ChartAreas.Add(chartArea4);
             this.chartPie_3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend12.Name = "Legend1";
-            this.chartPie_3.Legends.Add(legend12);
+            legend4.Name = "Legend1";
+            this.chartPie_3.Legends.Add(legend4);
             this.chartPie_3.Location = new System.Drawing.Point(0, 23);
             this.chartPie_3.Name = "chartPie_3";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series12.IsValueShownAsLabel = true;
-            series12.Label = "#VALX\\n [#VAL](#PERCENT)";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            series12.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
-            this.chartPie_3.Series.Add(series12);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.IsValueShownAsLabel = true;
+            series4.Label = "#VALX\\n [#VAL](#PERCENT)";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            this.chartPie_3.Series.Add(series4);
             this.chartPie_3.Size = new System.Drawing.Size(528, 180);
             this.chartPie_3.TabIndex = 4;
             this.chartPie_3.Text = "男女比例";
@@ -6309,6 +6324,7 @@
             this.button5.TabIndex = 40;
             this.button5.Text = "删除";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // btnGoAddSSZZ
             // 
@@ -6343,14 +6359,17 @@
             this.dgvSSZZ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSSZZ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.createDate,
-            this.creator});
+            this.creator,
+            this.id});
             this.dgvSSZZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSSZZ.Location = new System.Drawing.Point(0, 26);
+            this.dgvSSZZ.MultiSelect = false;
             this.dgvSSZZ.Name = "dgvSSZZ";
             this.dgvSSZZ.RowTemplate.Height = 23;
             this.dgvSSZZ.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSSZZ.Size = new System.Drawing.Size(250, 325);
             this.dgvSSZZ.TabIndex = 40;
+            this.dgvSSZZ.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSSZZ_CellClick);
             // 
             // createDate
             // 
@@ -6363,6 +6382,12 @@
             this.creator.HeaderText = "创建人";
             this.creator.Name = "creator";
             this.creator.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
             // 
             // button3
             // 
@@ -6915,14 +6940,14 @@
             this.dgvSSXGXY_Control.AllowUserToAddRows = false;
             this.dgvSSXGXY_Control.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSSXGXY_Control.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSSXGXY_Control.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSSXGXY_Control.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSSXGXY_Control.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSSXGXY_Control.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSSXGXY_Control.EnableHeadersVisualStyles = false;
@@ -7134,18 +7159,6 @@
             this.printPreviewDialogSJCX_SSJL.Name = "printPreviewDialogSJCX_SSJL";
             this.printPreviewDialogSJCX_SSJL.Visible = false;
             this.printPreviewDialogSJCX_SSJL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.printPreviewDialogSJCX_SSJL_MouseDown);
-            // 
-            // toolStripMenuItemCut
-            // 
-            this.toolStripMenuItemCut.Name = "toolStripMenuItemCut";
-            this.toolStripMenuItemCut.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemCut.Text = "剪切";
-            // 
-            // toolStripMenuItemSelectAll
-            // 
-            this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
-            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemSelectAll.Text = "全选";
             // 
             // FormMain
             // 
@@ -8013,8 +8026,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel39;
         private System.Windows.Forms.DataGridView dgvKSGL_EMP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn creator;
         private System.Windows.Forms.Label label92;
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.Label lab_currentPage;
@@ -8038,6 +8049,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopy;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCut;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSelectAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn creator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
 
     }
 }

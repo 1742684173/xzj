@@ -1130,6 +1130,8 @@ namespace xzj
                     this.cbSSLR_SSBW.SelectedIndex = -1;
                     removeAllSSTP();
                     hideAllTraceTime();
+                    this.picSSTP.Image = null;
+                    this.pictureBox10.Image = null;
                 }
                 catch (Exception ex) {
                     MessageBox.Show("保存失败：" + ex.Message);
@@ -1294,25 +1296,131 @@ namespace xzj
         //手术记录名字输入后 回车键查询
         private void tbSSLR_NAME_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                if (string.IsNullOrEmpty(this.tbSSLR_NAME.Text))
+                if (e.KeyCode == Keys.Enter)
                 {
-                    MessageBox.Show("请输入名称");
-                    return;
-                }
-
-                //r_patient_ID,r_date,r_ss_address,r_ss_type,r_ss_method,r_cc_method,r_zd_docotor,r_zs,r_qxhs,r_ss_record,r_is_sszz
-                string sql = string.Format("select p_name,p_sex,p_age,p_tel,p_ID,p_health_type,p_address,p_dialyse_hospital,p_dialyse_hospital_contact," +
-                    "p_dialyse_hospital_tel from t_patient where p_name='{0}'", this.tbSSLR_NAME.Text);
-                dataTable = DBManager.getInstance().find(sql);
-                if (dataTable != null && dataTable.Rows.Count > 0)
-                {
-                    if (dataTable.Rows.Count > 1)
+                    if (string.IsNullOrEmpty(this.tbSSLR_NAME.Text))
                     {
-                        MessageBox.Show("该名称有多个，请再输入身份证");
+                        MessageBox.Show("请输入名称");
+                        return;
+                    }
+
+                    //r_patient_ID,r_date,r_ss_address,r_ss_type,r_ss_method,r_cc_method,r_zd_docotor,r_zs,r_qxhs,r_ss_record,r_is_sszz
+                    string sql = string.Format("select p_name,p_sex,p_age,p_tel,p_ID,p_health_type,p_address,p_dialyse_hospital,p_dialyse_hospital_contact," +
+                        "p_dialyse_hospital_tel from t_patient where p_name='{0}'", this.tbSSLR_NAME.Text);
+                    dataTable = DBManager.getInstance().find(sql);
+                    if (dataTable != null && dataTable.Rows.Count > 0)
+                    {
+                        if (dataTable.Rows.Count > 1)
+                        {
+                            MessageBox.Show("该名称有多个，请再输入身份证");
+                        }
+                        else
+                        {
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                this.tbSSLR_NAME.Text = row["p_name"].ToString();//患者姓名
+                                this.cbSSLR_SEX.Text = row["p_sex"].ToString();//性别
+                                this.tbSSLR_AGE.Text = row["p_age"].ToString();//年龄
+                                this.tbSSLR_TEL.Text = row["p_tel"].ToString();//手机号
+                                this.tbSSLR_ID.Text = row["p_ID"].ToString();//身份证号
+                                this.cbSSLR_YBLX.Text = row["p_health_type"].ToString();//医保类型
+                                this.cbSSLR_PROVINCE.Text = row["p_address"].ToString().Split('-')[0];//省
+                                this.cbSSLR_CITY.Text = row["p_address"].ToString().Split('-')[1];//市
+                                this.cbSSLR_COUNTY.Text = row["p_address"].ToString().Split('-')[2];//县
+                                this.tbSSLR_DETAIL_ADDRESS.Text = row["p_address"].ToString().Split('-')[3];//详细地址
+                                this.tbSSLR_CTXYY.Text = row["p_dialyse_hospital"].ToString();//常透析医院
+                                this.tbSSLR_CTXYYLXR.Text = row["p_dialyse_hospital_contact"].ToString();//常透析医院联系人
+                                this.tbSSLR_CTXYYLXRDH.Text = row["p_dialyse_hospital_tel"].ToString();//常透析医院联系人电话
+                            }
+
+                            //查询该患者的最近一次的手术记录
+                            //查询该患者的最近一次的手术记录
+                            sql = string.Format("select id,r_date,r_ss_address,r_ss_type,r_ss_method,r_cc_method,r_zd_docotor,r_zs,r_qxhs,r_ss_record,r_is_sszz, " +
+                            "r_sszzqx,r_sszz,r_zz1,r_zz2,r_zz3,r_zz4,r_ssbw from t_record where r_patient_ID='{0}' order by id DESC limit 1", this.tbSSLR_ID.Text);
+                            dataTable = DBManager.getInstance().find(sql);
+                            if (dataTable != null && dataTable.Rows.Count > 0)
+                            {
+                                foreach (DataRow row in dataTable.Rows)
+                                {
+                                    this.labelSSLR_SSJL_ID.Text = row["id"].ToString();//手术记录id
+                                    this.dpSSLR_SSRQ.Value = Convert.ToDateTime(row["r_date"].ToString());//手术日期
+                                    this.cbSSLR_SSDD.Text = row["r_ss_address"].ToString();//手术地点
+                                    this.cbSSLR_SSLX.Text = row["r_ss_type"].ToString();//手术类型
+                                    this.cbSSLR_SSFS.Text = row["r_ss_method"].ToString();//手术方式
+                                    this.cbSSLR_CCFS.Text = row["r_cc_method"].ToString();//穿刺方式
+                                    this.rtbSSLR_SSJL.Rtf = row["r_ss_record"].ToString();//手术记录
+                                    this.tbSSLR_ZDYS.Text = row["r_zd_docotor"].ToString();//主刀医生
+                                    this.tbSSLR_ZS.Text = row["r_zs"].ToString();//助手
+                                    this.tbSSLR_QXFS.Text = row["r_qxhs"].ToString();//器械护士
+                                    this.cbSSLR_SSZZQX.Text = row["r_sszz"].ToString();
+                                    this.dtSSLR_SSZZ.Value = Convert.ToDateTime(row["r_sszzqx"].ToString());
+                                    this.cbSSLR_SSBW.Text = row["r_ssbw"].ToString();//手术部位
+
+                                    hideAllTraceTime();
+                                    if (this.cbSSLR_SSZZQX.Text.Equals(EVERY_THREE_MONTH))
+                                    {
+                                        const int monthInteval = 3;
+                                        labTraceTime1.Show();
+                                        dtTraceTime1.Show();
+                                        dtTraceTime1.Value = Convert.ToDateTime(row["r_zz1"].ToString());
+                                        labTraceTime2.Show();
+                                        dtTraceTime2.Show();
+                                        dtTraceTime2.Value = Convert.ToDateTime(row["r_zz2"].ToString());
+                                        labTraceTime3.Show();
+                                        dtTraceTime3.Show();
+                                        dtTraceTime3.Value = Convert.ToDateTime(row["r_zz3"].ToString());
+                                        labTraceTime4.Show();
+                                        dtTraceTime4.Show();
+                                        dtTraceTime4.Value = Convert.ToDateTime(row["r_zz4"].ToString());
+                                    }
+                                    else
+                                    {
+                                        // EVERY_SIX_MONTH
+                                        const int monthInteval = 6;
+                                        labTraceTime1.Show();
+                                        dtTraceTime1.Show();
+                                        dtTraceTime1.Value = Convert.ToDateTime(row["r_zz1"].ToString()); ;
+                                        labTraceTime2.Show();
+                                        dtTraceTime2.Show();
+                                        dtTraceTime2.Value = Convert.ToDateTime(row["r_zz2"].ToString());
+                                    }
+
+                                }
+                            }
+
+                        }
                     }
                     else
+                    {
+                        MessageBox.Show("该名称不存在");
+                    }
+
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        //手术记录身份证输入后 回车键查询
+        private void tbSSLR_ID_KeyDown(object sender, KeyEventArgs e)
+        {
+            try{
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (string.IsNullOrEmpty(this.tbSSLR_ID.Text))
+                    {
+                        MessageBox.Show("请输入身份证");
+                        return;
+                    }
+
+                    string sql = string.Format("select p_name,p_sex,p_age,p_tel,p_ID,p_health_type,p_address,p_dialyse_hospital,p_dialyse_hospital_contact," +
+                        "p_dialyse_hospital_tel from t_patient where p_ID='{0}'", this.tbSSLR_ID.Text);
+                    dataTable = DBManager.getInstance().find(sql);
+                    if (dataTable != null && dataTable.Rows.Count > 0)
                     {
                         foreach (DataRow row in dataTable.Rows)
                         {
@@ -1332,8 +1440,8 @@ namespace xzj
                         }
 
                         //查询该患者的最近一次的手术记录
-                        sql = string.Format("select id,r_date,r_ss_address,r_ss_type,r_ss_method,r_cc_method,r_zd_docotor,r_zs,r_qxhs,r_ss_record,r_is_sszz" +
-                        " from t_record where r_patient_ID='{0}' order by id DESC limit 1", this.tbSSLR_ID.Text);
+                        sql = string.Format("select id,r_date,r_ss_address,r_ss_type,r_ss_method,r_cc_method,r_zd_docotor,r_zs,r_qxhs,r_ss_record,r_is_sszz, " +
+                        "r_sszzqx,r_sszz,r_zz1,r_zz2,r_zz3,r_zz4,r_ssbw from t_record where r_patient_ID='{0}' order by id DESC limit 1", this.tbSSLR_ID.Text);
                         dataTable = DBManager.getInstance().find(sql);
                         if (dataTable != null && dataTable.Rows.Count > 0)
                         {
@@ -1345,84 +1453,57 @@ namespace xzj
                                 this.cbSSLR_SSLX.Text = row["r_ss_type"].ToString();//手术类型
                                 this.cbSSLR_SSFS.Text = row["r_ss_method"].ToString();//手术方式
                                 this.cbSSLR_CCFS.Text = row["r_cc_method"].ToString();//穿刺方式
-                                this.rtbSSLR_SSJL.Text = row["r_ss_record"].ToString();//手术记录
+                                this.rtbSSLR_SSJL.Rtf = row["r_ss_record"].ToString();//手术记录
                                 this.tbSSLR_ZDYS.Text = row["r_zd_docotor"].ToString();//主刀医生
                                 this.tbSSLR_ZS.Text = row["r_zs"].ToString();//助手
                                 this.tbSSLR_QXFS.Text = row["r_qxhs"].ToString();//器械护士
+                                this.cbSSLR_SSZZQX.Text = row["r_sszz"].ToString();
+                                this.dtSSLR_SSZZ.Value = Convert.ToDateTime(row["r_sszzqx"].ToString());
+                                this.cbSSLR_SSBW.Text = row["r_ssbw"].ToString();//手术部位
+                                
+                                hideAllTraceTime();
+                                if (this.cbSSLR_SSZZQX.Text.Equals(EVERY_THREE_MONTH))
+                                {
+                                    const int monthInteval = 3;
+                                    labTraceTime1.Show();
+                                    dtTraceTime1.Show();
+                                    dtTraceTime1.Value = Convert.ToDateTime(row["r_zz1"].ToString());
+                                    labTraceTime2.Show();
+                                    dtTraceTime2.Show();
+                                    dtTraceTime2.Value = Convert.ToDateTime(row["r_zz2"].ToString());
+                                    labTraceTime3.Show();
+                                    dtTraceTime3.Show();
+                                    dtTraceTime3.Value = Convert.ToDateTime(row["r_zz3"].ToString());
+                                    labTraceTime4.Show();
+                                    dtTraceTime4.Show();
+                                    dtTraceTime4.Value = Convert.ToDateTime(row["r_zz4"].ToString());
+                                }
+                                else
+                                {
+                                    // EVERY_SIX_MONTH
+                                    const int monthInteval = 6;
+                                    labTraceTime1.Show();
+                                    dtTraceTime1.Show();
+                                    dtTraceTime1.Value = Convert.ToDateTime(row["r_zz1"].ToString()); ;
+                                    labTraceTime2.Show();
+                                    dtTraceTime2.Show();
+                                    dtTraceTime2.Value = Convert.ToDateTime(row["r_zz2"].ToString());
+                                }
+
                             }
                         }
-                        
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("该身份证不存在");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("该名称不存在");
-                }
-
             }
-        }
-
-        //手术记录身份证输入后 回车键查询
-        private void tbSSLR_ID_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            catch (Exception err)
             {
-                if (string.IsNullOrEmpty(this.tbSSLR_ID.Text))
-                {
-                    MessageBox.Show("请输入身份证");
-                    return;
-                }
-
-                string sql = string.Format("select p_name,p_sex,p_age,p_tel,p_ID,p_health_type,p_address,p_dialyse_hospital,p_dialyse_hospital_contact," +
-                    "p_dialyse_hospital_tel from t_patient where p_ID='{0}'", this.tbSSLR_ID.Text);
-                dataTable = DBManager.getInstance().find(sql);
-                if (dataTable != null && dataTable.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dataTable.Rows)
-                    {
-                        this.tbSSLR_NAME.Text = row["p_name"].ToString();//患者姓名
-                        this.cbSSLR_SEX.Text = row["p_sex"].ToString();//性别
-                        this.tbSSLR_AGE.Text = row["p_age"].ToString();//年龄
-                        this.tbSSLR_TEL.Text = row["p_tel"].ToString();//手机号
-                        this.tbSSLR_ID.Text = row["p_ID"].ToString();//身份证号
-                        this.cbSSLR_YBLX.Text = row["p_health_type"].ToString();//医保类型
-                        this.cbSSLR_PROVINCE.Text = row["p_address"].ToString().Split('-')[0];//省
-                        this.cbSSLR_CITY.Text = row["p_address"].ToString().Split('-')[1];//市
-                        this.cbSSLR_COUNTY.Text = row["p_address"].ToString().Split('-')[2];//县
-                        this.tbSSLR_DETAIL_ADDRESS.Text = row["p_address"].ToString().Split('-')[3];//详细地址
-                        this.tbSSLR_CTXYY.Text = row["p_dialyse_hospital"].ToString();//常透析医院
-                        this.tbSSLR_CTXYYLXR.Text = row["p_dialyse_hospital_contact"].ToString();//常透析医院联系人
-                        this.tbSSLR_CTXYYLXRDH.Text = row["p_dialyse_hospital_tel"].ToString();//常透析医院联系人电话
-                    }
-
-                    //查询该患者的最近一次的手术记录
-                    sql = string.Format("select id,r_date,r_ss_address,r_ss_type,r_ss_method,r_cc_method,r_zd_docotor,r_zs,r_qxhs,r_ss_record,r_is_sszz" +
-                    " from t_record where r_patient_ID='{0}' order by id DESC limit 1", this.tbSSLR_ID.Text);
-                    dataTable = DBManager.getInstance().find(sql);
-                    if (dataTable != null && dataTable.Rows.Count > 0)
-                    {
-                        foreach (DataRow row in dataTable.Rows)
-                        {
-                            this.labelSSLR_SSJL_ID.Text = row["id"].ToString();//手术记录id
-                            this.dpSSLR_SSRQ.Value = Convert.ToDateTime(row["r_date"].ToString());//手术日期
-                            this.cbSSLR_SSDD.Text = row["r_ss_address"].ToString();//手术地点
-                            this.cbSSLR_SSLX.Text = row["r_ss_type"].ToString();//手术类型
-                            this.cbSSLR_SSFS.Text = row["r_ss_method"].ToString();//手术方式
-                            this.cbSSLR_CCFS.Text = row["r_cc_method"].ToString();//穿刺方式
-                            this.rtbSSLR_SSJL.Text = row["r_ss_record"].ToString();//手术记录
-                            this.tbSSLR_ZDYS.Text = row["r_zd_docotor"].ToString();//主刀医生
-                            this.tbSSLR_ZS.Text = row["r_zs"].ToString();//助手
-                            this.tbSSLR_QXFS.Text = row["r_qxhs"].ToString();//器械护士
-                        }
-                    }
-                   
-                }
-                else
-                {
-                    MessageBox.Show("该身份证不存在");
-                }
+                MessageBox.Show(err.Message);
             }
-
         }
 
        //输入数字包括小数点
@@ -3486,6 +3567,7 @@ namespace xzj
                 int rowNumber = this.dgvSSZZ.Rows.Add();
                 this.dgvSSZZ.Rows[rowNumber].Cells[0].Value = ValueSender.createDate.ToShortDateString();
                 this.dgvSSZZ.Rows[rowNumber].Cells[1].Value = ValueSender.creator;
+                this.dgvSSZZ.Rows[rowNumber].Cells[2].Value = "-1";
             }
             
         }
@@ -4173,6 +4255,7 @@ namespace xzj
                         int rowNumber = this.dgvSSZZ.Rows.Add();
                         this.dgvSSZZ.Rows[rowNumber].Cells[0].Value = reader.GetDateTime("t_sszzrq").ToShortDateString();
                         this.dgvSSZZ.Rows[rowNumber].Cells[1].Value = reader.GetString("t_sszzcjr");
+                        this.dgvSSZZ.Rows[rowNumber].Cells[2].Value = reader.GetString("id");
                     }
                 }
                 
@@ -4505,6 +4588,169 @@ namespace xzj
                 }
 
             }
+        }
+
+        private void dgvSSZZ_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            if (rowIndex > -1)
+            {
+                String id = Convert.ToString(this.dgvSSZZ.Rows[rowIndex].Cells[2].Value); //  = reader.GetString("id");
+                if ("-1".Equals(id))
+                {
+                    // this.dgvSSZZ.Rows[rowIndex].
+                    // 没有操作
+                }
+                else
+                {
+                    // 查询
+                    // T_TRACK_SELECT_BY_RECORD_ID_3
+                    MySqlParameter[] ps = new MySqlParameter[] {
+                        new MySqlParameter("@id", id)
+                    };
+                    using (MySqlDataReader reader = SqlHelper4MySql.ExecuteReader(SqlCommandHelpler.T_TRACK_SELECT_BY_RECORD_ID_3, ps))
+                    {
+                        while (reader.Read())
+                        {
+                            //this.labSSZZ_LXFS.Text = reader.GetString("p_tel");
+                            // Console.WriteLine(reader.GetString("p_tel"));
+                            // t_sfsszzcg, t_sssbyy 
+                            String sfsszzcg = reader.GetString("t_sfsszzcg");
+                            if ("是".Equals(sfsszzcg))
+                            {
+                                cbxSSZZ_SFCG.SelectedIndex = 0;
+
+                                using (MySqlDataReader reader2 = SqlHelper4MySql.ExecuteReader(SqlCommandHelpler.T_TRACK_SELECT_BY_RECORD_ID_4, ps))
+                                {
+                                    while (reader2.Read())
+                                    {
+                                        // "select t_ssct, t_ywxlbct, t_ywxm, t_ywbfz, t_ywxbjmqz," +
+                                        // "t_ywccbwphgmqk, t_nwzwdlqk, t_ccbwpfqk, t_grkzfs, t_zwcmzcjtzqk " +
+                                        // "from t_track WHERE id = @id;";
+                                        // cbSSLR_SSZZ_SFTC.SelectedText = ;
+
+                                        if ("是".Equals(reader2.GetString("t_ssct")))
+                                        {
+                                            cbSSLR_SSZZ_SFTC.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cbSSLR_SSZZ_SFTC.SelectedIndex = 1;
+                                        }
+                                        if ("是".Equals(reader2.GetString("t_ywxlbct")))
+                                        {
+                                            cbSSLR_SSZZ_YWXLBCT.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cbSSLR_SSZZ_YWXLBCT.SelectedIndex = 1;
+                                        }
+
+
+                                        if ("是".Equals(reader2.GetString("t_ywbfz")))
+                                        {
+                                            cbSSLR_SSZZ_YWBFZ.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cbSSLR_SSZZ_YWBFZ.SelectedIndex = 1;
+                                        }
+
+                                        if ("是".Equals(reader2.GetString("t_ywxm")))
+                                        {
+                                            cbSSLR_SSZZ_YWXM.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cbSSLR_SSZZ_YWXM.SelectedIndex = 1;
+                                        }
+
+                                        if ("是".Equals(reader2.GetString("t_ywxbjmqz")))
+                                        {
+                                            cbSSLR_SSZZ_YWXBJMQZ.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cbSSLR_SSZZ_YWXBJMQZ.SelectedIndex = 1;
+                                        }
+
+                                        if ("是".Equals(reader2.GetString("t_ywccbwphgmqk")))
+                                        {
+                                            cbSSLR_SSZZ_YWCCBWPFGMQK.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cbSSLR_SSZZ_YWCCBWPFGMQK.SelectedIndex = 1;
+                                        }
+                                        tbSSLR_SSZZ_ZWQMJTZQK.Text = reader2.GetString("t_zwcmzcjtzqk");
+
+                                        //  t_grkzfs, t_zwcmzcjtzqk
+                                        cbSSLR_SSZZ_NWZWDLQK.Text = reader2.GetString("t_nwzwdlqk");
+                                        cbSSLR_SSZZ_GRKZFS.Text = reader2.GetString("t_grkzfs");
+                                        cbSSLR_SSZZ_CCBWPFQK.Text = reader2.GetString("t_ccbwpfqk");
+
+                                    }
+                                }
+
+                            }
+                            else
+                            {
+                                // 失败
+                                cbxSSZZ_SFCG.SelectedIndex = 1;
+                                rtbSSZZ_FailReason.Text = reader.GetString("t_sssbyy");
+                            }
+
+
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (null != dgvSSZZ.CurrentRow) {
+                // MessageBox.Show("Test" + dgvSSZZ.CurrentRow.Index);
+                // MessageBox.Show("Test" + this.dgvSSZZ.Rows[dgvSSZZ.CurrentRow.Index].Cells[2].Value);
+                int id = Convert.ToInt32(this.dgvSSZZ.Rows[dgvSSZZ.CurrentRow.Index].Cells[2].Value);
+                if (id == -1)
+                {
+                    dgvSSZZ.Rows.Remove(dgvSSZZ.CurrentRow);
+                }
+                else {
+                    DialogResult dr = MessageBox.Show("确定删除该记录？", "", MessageBoxButtons.YesNo);
+                    if (DialogResult.Yes == dr) {
+                        dgvSSZZ.Rows.Remove(dgvSSZZ.CurrentRow);
+                        // T_TRACK_DELETE_BY_RECORD_ID
+                        SqlHelper4MySql.ExecuteNonQuery(SqlCommandHelpler.T_TRACK_DELETE_BY_RECORD_ID, new MySqlParameter[]{
+                            new MySqlParameter("@id", id)
+                        });
+                    }
+                }
+
+            }
+
+
+        }
+
+        private void picSSTP_Click(object sender, EventArgs e)
+        {
+            if (picSSTP.Image != null) {
+                FormMaxImage formMaxImage = new FormMaxImage(picSSTP.Image);
+                formMaxImage.ShowDialog();
+            }    
+
+        }
+
+        private void pictureBox10_Click(object sender, EventArgs e)
+        {
+
+            if (pictureBox10.Image != null)
+            {
+                FormMaxImage formMaxImage = new FormMaxImage(pictureBox10.Image);
+                formMaxImage.ShowDialog();
+            }    
         }
 
       

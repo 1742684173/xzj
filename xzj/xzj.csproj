@@ -177,6 +177,12 @@
     <Compile Include="xzjForm\FormControlContent.Designer.cs">
       <DependentUpon>FormControlContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="xzjForm\FormMaxImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xzjForm\FormMaxImage.Designer.cs">
+      <DependentUpon>FormMaxImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="xzjForm\FormModifyControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="xzjForm\FormControlContent.resx">
       <DependentUpon>FormControlContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xzjForm\FormMaxImage.resx">
+      <DependentUpon>FormMaxImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="xzjForm\FormModifyControl.resx">
       <DependentUpon>FormModifyControl.cs</DependentUpon>

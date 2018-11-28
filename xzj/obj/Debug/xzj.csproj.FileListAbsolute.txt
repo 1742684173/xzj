@@ -87,3 +87,15 @@ C:\Users\Administrator\Desktop\xzj-master\xzj\obj\Debug\xzj.FormSignIn.resources
 C:\Users\Administrator\Desktop\xzj-master\xzj\obj\Debug\xzj.xzjForm.FormControlContent.resources
 C:\Users\Administrator\Desktop\xzj-master\xzj\obj\Debug\xzj.xzjForm.FormModifyControl.resources
 C:\Users\Administrator\Desktop\xzj-master\xzj\obj\Debug\xzj.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\析之助手术登记管理系统.exe.manifest
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\析之助手术登记管理系统.application
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\析之助手术登记管理系统.exe
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\析之助手术登记管理系统.pdb
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\itextsharp.dll
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\MySql.Data.dll
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\System.Data.SQLite.dll
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\itextsharp.xml
+C:\Users\Administrator\Desktop\xzj-master\xzj\bin\Debug\System.Data.SQLite.pdb
+C:\Users\Administrator\Desktop\xzj-master\xzj\obj\Debug\析之助手术登记管理系统.exe.manifest
+C:\Users\Administrator\Desktop\xzj-master\xzj\obj\Debug\析之助手术登记管理系统.application
+C:\Users\Administrator\Desktop\xzj-master\xzj\obj\Debug\xzj.xzjForm.FormMaxImage.resources

@@ -120,8 +120,13 @@ namespace xzj.utils
 
         // t_track 手术跟踪
         // 查询某个手术的已经跟踪的手术追踪
-        public static string T_TRACK_SELECT_BY_RECORD_ID = "SELECT t_sszzrq, t_sszzcjr FROM t_track WHERE t_record_id = @t_record_id AND t_sfsszz = '是'";
+        public static string T_TRACK_SELECT_BY_RECORD_ID = "SELECT id, t_sszzrq, t_sszzcjr FROM t_track WHERE t_record_id = @t_record_id AND t_sfsszz = '是'";
         public static string T_TRACK_SELECT_BY_RECORD_ID_2 = "SELECT t_record_id, t_patient_id, t_zzrq FROM t_track WHERE id = @id;";
+        public static string T_TRACK_SELECT_BY_RECORD_ID_3 = "SELECT t_sfsszzcg, t_sssbyy FROM t_track WHERE id = @id;";
+        public static string T_TRACK_SELECT_BY_RECORD_ID_4 = "select t_ssct, t_ywxlbct, t_ywxm, t_ywbfz, t_ywxbjmqz," +
+            "t_ywccbwphgmqk, t_nwzwdlqk, t_ccbwpfqk, t_grkzfs, t_zwcmzcjtzqk " +
+            "from t_track WHERE id = @id;";
+        public static string T_TRACK_DELETE_BY_RECORD_ID = "delete from t_track where id = @id;";
         public static string T_TRACK_INSERT_PART = "INSERT INTO t_track( " +
             "t_record_id, " +
             "t_patient_ID, " +
